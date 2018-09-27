@@ -1,0 +1,22 @@
+### WordPress-specific settings for robot.py ###
+
+# completely remove these URLs:
+remove:
+    - '[?&]p='
+    - /xmlrpc\.php
+    - /feed
+    - /wp-login\.php
+    - /wp-admin/
+    - /wp-json/
+    - /wp-includes/wlwmanifest\.xml
+
+# Disable these URLs:
+disable:
+    - /Suche
+    - /author/
+    - /category/
+
+# URL fix-ups
+replace:
+    '/page/(\d+)$':    '/page/\1.html'
+    '/archive/(\d+)$': '/archive/\1.html'

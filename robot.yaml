@@ -1,0 +1,65 @@
+### Basic Robot configuration   ###
+
+# User agent header
+user_agent: 'robot.py'
+
+# Additional headers
+headers:
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+        Accept-Language: 'en, de'
+
+# URL schemes that we process
+protocols:
+    - 'http'
+    - 'https'
+
+# URL schemes that we won't touch
+specials:
+    - 'mailto:'
+    - 'javascript:'
+
+# Static resources
+static:
+    - '.jpg'
+    - '.jpeg'
+    - '.gif'
+    - '.mp4'
+    - '.mp3'
+    - '.png'
+    - '.svg'
+    - '.css'
+    - '.js'
+
+# Suffixes to replace by page_suffix
+dynamic:
+    - '.php'
+    - '.cgi'
+
+# Default page if none is given in an URL
+index: index.html
+
+# Default page extension
+page_suffix: '.html'
+
+# Default search depth
+depth: 99
+
+# Number of concurrent connections
+connections: 1
+
+# Dictionary of ad-hoc URL replacements.
+# Needed to follow server-sides redirects.
+# Empty by default.
+rewrite: {}
+
+# Dictionary of local URL replacements
+# Empty by default.
+replace: {}
+
+# Completely remove these URLs
+# Empty by default.
+remove: []
+
+# Disable these URLs (replace by '#')
+# Empty by default.
+disable: []
