@@ -17,5 +17,5 @@ URL / link processing:
 
 See `robot -h` for command line arguments. Typical usage:
 
-    ./robot.py -c 4 -f wp.yaml http://example.org/path/to/wordpress/
+    ./robot.py -c 4 -f wp.yaml -b http://example.org/path/to/wordpress/
 
