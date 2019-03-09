@@ -36,7 +36,7 @@ class Url:
             if not self.url.netloc: raise ValueError( url)
             
             if '.' in os.path.basename( self.url.path):
-                path, self.type = os.path.splitext( self.url.path.lower())
+                _path, self.type = os.path.splitext( self.url.path.lower())
             
             
     def __str__( self):
@@ -44,13 +44,13 @@ class Url:
     
     
     def __eq__( self, other):
-        left,  frag = urlparse.urldefrag( str( self))
-        right, frag = urlparse.urldefrag( str( other))
+        left,  _frag = urlparse.urldefrag( str( self))
+        right, _frag = urlparse.urldefrag( str( other))
         return left == right
         
         
     def __hash__( self):
-        left,  frag = urlparse.urldefrag( str( self))
+        left,  _frag = urlparse.urldefrag( str( self))
         return hash( left)
         
         
@@ -75,6 +75,7 @@ class Url:
                 return str( self)
 
         path = self.url.path
+        if self.url.query: path = self.url.path + '?' + self.url.query
         for pattern, sub in CONFIG['replace'].items():
             if pattern.search( path):
                 path = pattern.sub( sub, path)
@@ -82,7 +83,7 @@ class Url:
         if path != self.url.path:
             pass
         elif self.type in CONFIG['dynamic']:
-            path, ext = os.path.splitext( self.url.path)
+            path, _ext = os.path.splitext( self.url.path)
             path = path + CONFIG['page_suffix']
         elif path.endswith('/'):
             path += CONFIG['index']
@@ -269,7 +270,7 @@ class Robot:
     def harvest( self, page):
         'Extract URLs from HTML'
 
-        for (element, attribute, url, pos) in page.html.iterlinks():
+        for (_element, _attribute, url, _pos) in page.html.iterlinks():
             url = self.rewrite( url)
 
             try:

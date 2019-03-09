@@ -53,8 +53,10 @@ connections: 1
 rewrite: {}
 
 # Dictionary of local URL replacements
-# Empty by default.
-replace: {}
+# Removed query strings by default.
+replace: {
+    '\?.*': ''
+}
 
 # Completely remove these URLs
 # Empty by default.
