@@ -1,0 +1,7 @@
+### Typo3-specific settings for robot.py ###
+
+# URL fix-ups
+replace:
+    'index.php\?id=(\d+)$':    'page\1.html'
+    'index.php\?eID=tx_cms_showpic&file=(\d+)&.*' : 'file\1.html'
+    '\?\d+': ''

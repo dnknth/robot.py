@@ -1,4 +1,4 @@
 asks==2.0.0
 curio==0.9
 lxml==4.2.2
-PyYAML==3.12
+PyYAML==3.13
