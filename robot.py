@@ -347,7 +347,8 @@ if __name__ == '__main__':
     asks.init('curio')
 
     # Read basic config
-    CONFIG.update( yaml.load( open( __file__.replace ( '.py', '.yaml')).read()))
+    CONFIG.update( yaml.load( open( __file__.replace ( '.py', '.yaml')).read(),
+        Loader=yaml.SafeLoader))
     
     # Handle command line arguments
     from argparse import ArgumentParser, FileType
@@ -371,7 +372,7 @@ if __name__ == '__main__':
     # Update default settings with site configuration 
     args = parser.parse_args()
     if args.config:
-        CONFIG.update( yaml.load( args.config.read()))
+        CONFIG.update( yaml.load( args.config.read(), Loader=yaml.SafeLoader))
         
     # Handle command line overrides
     if args.baseurl: CONFIG['baseurl'] = args.baseurl
