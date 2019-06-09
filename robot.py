@@ -351,19 +351,18 @@ if __name__ == '__main__':
     
     # Handle command line arguments
     from argparse import ArgumentParser, FileType
-    from multiprocessing import cpu_count
     parser = ArgumentParser( description='Crawl a web site.')
     parser.add_argument( '-b', '--baseurl', help="base URL")
     parser.add_argument( '-f', '--config', type=FileType('r'), help='YAML config')
     parser.add_argument( '-d', '--depth', type=int, default=CONFIG['depth'],
-        help='search depth, default=%d' % CONFIG['depth'])
+        help='search depth (default: %d)' % CONFIG['depth'])
 
     parser.add_argument( '-n', '--dryrun', action='store_const',
         const=True, default=False, help='dry run, do not store')
     parser.add_argument( '-v', '--verbosity', type=int, default=0,
         help='log level (0-3, default: 0)')
-    parser.add_argument( '-c', '--connections', type=int, default=cpu_count(),
-        help='number of concurrent connections (default: %d)' % cpu_count())        
+    parser.add_argument( '-c', '--connections', type=int, default=4,
+        help='number of concurrent connections (default: 4)')        
     parser.add_argument( '-H', '--html-only', action='store_const',
         const=True, default=False, help='retrieve only HTML pages')
     parser.add_argument( '-s', '--strip', action='store_const',
