@@ -44,9 +44,6 @@ page_suffix: '.html'
 # Default search depth
 depth: 99
 
-# Number of concurrent connections
-connections: 1
-
 # Dictionary of ad-hoc URL replacements.
 # Needed to follow server-sides redirects.
 # Empty by default.
