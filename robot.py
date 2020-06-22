@@ -7,7 +7,7 @@ Copyright (c) 1998-2018 Daniel Knauth
 
 from lxml import html
 from urllib import parse as urlparse, robotparser
-import asks, curio, os, re, time, yaml
+import asks, curio, os, re, sys, time, yaml
 
 
 # global settings are loaded from YAML files
@@ -377,6 +377,10 @@ if __name__ == '__main__':
     # Handle command line overrides
     if args.baseurl: CONFIG['baseurl'] = args.baseurl
     if args.connections: CONFIG['connections'] = args.connections
+    
+    if not CONFIG.get( 'baseurl'):
+        parser.print_help()
+        sys.exit( 1)
     
     # Compile URL patterns
     CONFIG['disable'] = map( re.compile, CONFIG['disable'])
